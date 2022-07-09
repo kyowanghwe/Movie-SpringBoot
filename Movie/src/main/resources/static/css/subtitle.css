@@ -1,0 +1,18 @@
+#video::cue {		
+    /* semi transparent */
+    /* background-color: rgba(255,255,255,0.5);  */
+    background-color: transparent;
+    /* color: #d1d100; */
+    color: #ffba00;
+    font-size: 100%; 
+    /* stroke text */
+    text-shadow: 1px 0 0 black,0 1px 0 black,-1px 0 0 black,0 -1px 0 black; 
+    font-family: "Arial", cursive;
+
+    /* background-color: #D3FFC0;
+    color: #FFC0CB;
+    outline-style: solid;
+    outline-color: #FF5D7A;
+    font-size: 32px;
+    font-family: "Times New Roman", cursive; */
+}

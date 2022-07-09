@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Movie</title>
+
+	<link rel="stylesheet" th:href="@{/css/subtitle.css}">
+	<link rel="stylesheet" th:href="@{/css/logo.css}">
+	<!-- <script defer th:src="@{/js/video.js}"></script> -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
+</head>
+
+<body>
+	<a th:href="@{/}">
+		<img th:src="@{/images/marvelCrop.jpg}" class="responsive" />
+	</a>
+	
+	<a th:text=${movieName}> </a>
+	
+	<form name="myForm" method="post" th:action="@{/movie}">
+		<label>Choose actress:</label>
+		<select id="actress" name="actress">
+			<option value=""></option>
+			<option th:each="item : ${actresses}"
+				th:value="${item}" th:text="${item}"></option>
+		</select><br>
+		
+		<label>Choose movie:</label>
+		<select name="movieName">
+			<option value=""></option>
+			<option th:each="item : ${listMovie}"
+				th:value="${item}" th:text="${item}"></option>
+		</select>
+		
+		<input type="hidden" name="currentDate" value="">
+		<input type="hidden" name="clientIP" value="">
+		<input type="hidden" name="clientCountry" value="">
+		<input type="hidden" name="clientCity" value="">
+		<input id="submit" type="submit" value="Submit">
+	</form>
+
+	<div class="player">
+		<video class="player__video viewer" id="video" width="100%" height="100%" controls autoplay preload="metadata">
+			<source th:src="${srcMovie}" type="video/mp4">
+			<track label="English" kind="subtitles" srclang="en" th:src="${srcSubtitle}" default>
+		</video>
+
+		<button id="back" >« 30s</button>
+		<button id="skip" >30s »</button>
+	</div>
+
+	<script th:src="@{/js/back-forward-button.js}"></script>
+	<script th:src="@{/js/client-info.js}"></script>
+	<script th:src="@{/js/store-local-selected.js}"></script>
+</body>
+
+</html>
